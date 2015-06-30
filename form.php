@@ -46,6 +46,8 @@ class report_filetrash_form extends moodleform {
                 array('class' => 'bold trashheader'));
         $size = html_writer::tag('span', get_string('filesize', 'report_filetrash'),
                 array('class' => 'bold trashheader'));
+        $mtime = html_writer::tag('span', get_string('filemtime', 'report_filetrash'),
+                array('class' => 'bold trashheader'));
         $extensionheader = html_writer::tag('span', get_string('extension', 'report_filetrash'),
                 array('class' => 'bold trashheader'));
 
@@ -58,6 +60,7 @@ class report_filetrash_form extends moodleform {
                 $filename = $file['filename'];
                 $filekey = $file['filekey'];
                 $filesize = $file['filesize'];
+                $filemtime = $file['filemtime'];
                 $extension = $file['extension'];
 
                 $link = new moodle_url('/report/filetrash/file.php',
@@ -67,7 +70,8 @@ class report_filetrash_form extends moodleform {
                 $body = html_writer::tag('div', $name . $filelink);
                 $extensiondetails = html_writer::tag('div', $extensionheader . $extension);
                 $footer = html_writer::tag('div', $size . $filesize);
-                $filedetails = html_writer::tag('div', $header . $body . $extensiondetails . $footer,
+                $when = html_writer::tag('div', $mtime . date_format_string($filemtime, '%Y-%m-%d %r', get_user_timezone_offset()));
+                $filedetails = html_writer::tag('div', $header . $body . $extensiondetails . $footer . $when,
                         array('class' => 'filetrashdetails'));
 
                 $mform->addElement('checkbox', 'orphan_' . $filekey, $i . '. ', $filedetails);

@@ -104,6 +104,7 @@ class report_filetrash {
                 $file = (string) $fileinfo->getFilename();
                 $path = (string) $fileinfo->getPath();
                 $bytes = (string) $fileinfo->getSize();
+                $mtime = (string) $fileinfo->getMTime();
                 $size = self::get_size_format($bytes);
                 $pathfile = glob($path . '/' . $file);
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -112,6 +113,7 @@ class report_filetrash {
                     'filename' => $file,
                     'filepath' => $path,
                     'filesize' => $size,
+                    'filemtime' => $mtime,
                     'extension' => $mime);
             }
         }
@@ -192,6 +194,7 @@ class report_filetrash {
                 'filename' => $orphan['filename'],
                 'filepath' => $orphan['filepath'],
                 'filesize' => $orphan['filesize'],
+                'filemtime' => $orphan['filemtime'],
                 'extension' => $orphan['extension'],
                 'filekey' => $i);
         }

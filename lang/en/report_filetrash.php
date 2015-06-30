@@ -35,6 +35,7 @@ $string['directory'] = 'Directory: ';
 $string['extension'] = 'File type: ';
 $string['filename']  = 'File name: ';
 $string['filesize']  = 'File size: ';
+$string['filemtime'] = 'Last modified: ';
 $string['byte'] = ' byte';
 $string['bytes'] = ' bytes';
 $string['kb'] = ' KB';
